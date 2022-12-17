@@ -1,0 +1,62 @@
+PYGAME NOTES
+__________________
+
+il faut commener par importer le module "pygame" et puis l'initialiser pour qu'il 
+fonctionne
+il faut ensuite construire l'écran (screen) qu'on dit "display"
+
+## 	en python / pygame les instructions ou les ordres qu'on passe à l'ordinateur 
+	s'écrivent de façon :
+		1- Concernant la fenêtre:
+			pygame.display.set_***(variable)
+				avec (***) : le type de chose qu'on veut mettre:
+				 ex : set_icon() ou set_caption() ou set_mode()
+		2- Concernant les images:
+			pygame.image.load('location/nom.png')	
+	
+	--> les ordres qu'on donnent s'écrivent avec des points entre chaque mot
+
+La création de la fenêtre est temporaire.
+Et pour que la fenêtre reste maintenu tant que l'on quitte 'physiquement': 
+on doit faire une boucle while qui va boucler à l'infini et l'écran sera aussi présent
+l'infini TANTQUE on quitte.
+		Notion de event :
+	                             "event" est toutes les actions qu'on fait par clavier ou souris
+                                             ex : -toutes les touches sont des event
+			       -le fait de quitter une page web en cliquant sur l'icone
+                    	 	         'X' est un event.
+Donc pour quitter la fenêtre on aura besoin d'un 'event' qui sera une sous-boucle 'for'.
+get() est une fonction qui fait venir un certain nombre d'éxécutions.
+comment fonctionne 'event' :
+	event.type == pygame.*** 	 avec (***) le type de boutton que l'utilisateur appuie
+exemple de code python courant pour la maintenance du fenêtre pygame : 
+		_____________________________
+		run = True
+		while run:
+		         for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				run = False
+		______________________________
+
+création d'un arrière plan:
+en python on "rempli" l'écran avec une certaine couleure qu'on appelle par des codes 
+			par exemple, le code du noir est : (0,0,0)
+	en pseudo code : REMPLIR L'ECRAN ((0,0,0)) 
+	en python :      screen.fill ((0,0,0))
+	cette instruction doit être mis dans la boucle pour maintenir sa couleure jusqu'à la fin
+
+Création du joueur:
+la création du joueur se fait selon les axes x et y --> des coordonnées (x, y) avec x et y
+des constantes sans virgule.
+cette création nécessitera une image (.png) qui sera importer depuis les fichiers avec une localisation
+précise.
+Une fois l'image du joueur importé, il faut créer une fonction qui sera chargé de dessiner (blit) que l'écran
+et de prendre en compte nom de la variable dans laquelle l'image est stockée et ensuite ses coordonnées.
+		____________________________________________________________
+		en français : DESSINER SUR L'ECRAN TELQUE (nom de l'image (coordonnées))
+		en python : screen.blit(nom de l'image, (x,y))
+		_____________________________________________________________
+On appelle cette fonction dans la boucle while qui va boucler à l'infini car comme ça on va avoir l'image du joueur
+jusqu'à la fin du jeu tant que l'on quitte .
+
+ATTENTION RETENIR : tous les éléments qu'on veut avoir jusqu'à la fin doit être dans une boucle infinie.
